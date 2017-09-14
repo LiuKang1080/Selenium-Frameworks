@@ -21,15 +21,19 @@ class CustomSeleniumDriver:
         self.driver = driver
 
     def get_title(self):
+        """
+        Provide the current title of web page.
+        :return: (string) Title of Page.
+        """
         return self.driver.title
 
     def get_by_type(self, locator_type):
         """
         Filters elements by attribute type.
-        :param locator_type: Type of attribute that element that we want to interact with.
+        :param locator_type: Attribute Type of specific element.
         :return: BY.VALUE attribute or False.
         """
-        self.automation_logger.debug('Running Method: get_by_type :')
+        self.automation_logger.debug('Running Method: get_by_type: ')
         locator_type = locator_type.lower()
 
         if locator_type == 'id':
@@ -51,9 +55,9 @@ class CustomSeleniumDriver:
 
     def get_element(self, locator, locator_type='id'):
         """
-        Identify a specific element on a web page.
-        :param locator: The value of the attribute.
-        :param locator_type: The type of attribute (default = id).
+        Identify specific element on current web page.
+        :param locator: Value of the attribute.
+        :param locator_type: Type of attribute (default = 'id').
         :return: element: with unique attribute and its value.
         """
         self.automation_logger.debug('Running method: get_element: ')
@@ -71,10 +75,10 @@ class CustomSeleniumDriver:
 
     def get_element_list(self, locator, locator_type="id"):
         """
-        Gets a list of elements with the specified BY type.
-        :param locator: Locator for the elements on a page.
-        :param locator_type: BY type of the locators we want to interact with.
-        :return: element - List of elements.
+        Get a list of elements with the specified BY type.
+        :param locator: Locator for the elements on current page.
+        :param locator_type: BY type of the locators on current page.
+        :return: element: List of elements.
         """
         element = None
 
@@ -140,14 +144,14 @@ class CustomSeleniumDriver:
 
     def get_element_text(self, locator="", locator_type="id", element=None):
         """
-        Get 'Text' or the "innerText' of an element.
+        Get 'Text' or the 'innerText' of an element.
         -- --
         Either provide the complete element, or the combination of locator and locator_type.
         -- --
         :param locator: Specific locator of an element.
         :param locator_type: BY Type of an element.
         :param element: Complete element object.
-        :return: text
+        :return: text (string)
         """
         try:
             if locator:
@@ -178,7 +182,7 @@ class CustomSeleniumDriver:
     def highlight_element(self, element):
         """
         Highlights the specified element on current web page.
-        :param element: HTML element on current web page.
+        :param element: Specified element object on current web page.
         """
         self.driver = element._parent
         # self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
@@ -250,9 +254,12 @@ class CustomSeleniumDriver:
 
     def take_screen_shot(self, result_message):
         """
-        Takes screen shot of current page.
-        :param result_message:
-        :return:
+        Takes screen shot of current page and saves to the Screenshot directory.
+        If Screenshot directory does not exist it will be created when take_screen_shot
+        method is called.
+        :param result_message: Message provided for logging.
+                               Preferred: Name of Current Test case.
+        :return: N/A
         """
 
         file_name = result_message + "." + str(round(time.time() * 1000)) + ".png"
@@ -275,22 +282,30 @@ class CustomSeleniumDriver:
             self.automation_logger.error("An Error has occurred: Could not save screen shot. " + str(err))
 
     def element_explicit_wait(self, locator, locator_type='id', timeout=10, poll_frequency=0.5):
+        """
+        Explicitly wait for an element on current page to be interactive.
+        :param locator: Value of the attribute of an element.
+        :param locator_type: BY.Type attribute of an element.
+        :param timeout: Maximum number of seconds for element to be interactive.
+        :param poll_frequency: Frequency at which webdriver checks to see if element is active.
+        :return: element
+        """
         element = None
 
         try:
             by_type = self.get_by_type(locator_type)
-            print("Waiting for maximum ::" + str(timeout) +
-                  " :: seconds for element to be clickable")
+            self.automation_logger.info("Waiting for a maximum of ::" + str(timeout) +
+                                        " :: seconds for element to be interactive. ")
 
             wait = WebDriverWait(self.driver, timeout=timeout, poll_frequency=poll_frequency,
                                  ignored_exceptions=[NoSuchElementException, ElementNotSelectableException,
                                                      ElementNotVisibleException])
 
             element = wait.until(EC.element_to_be_clickable((by_type, locator)))
-            print("Element appeared on page")
+            self.automation_logger.info("Element appeared on page")
 
         except Exception as err:
-            print("Element not found." + str(err))
+            self.automation_logger.error("Element not found." + str(err))
 
         return element
 
@@ -307,4 +322,9 @@ class CustomSeleniumDriver:
             self.driver.execute_script("window.scrollBy(0, 1000);")
 
     def switch_iframes(self, frame_index):
+        """
+        Switch to a specified iFrame on current page.
+        :param frame_index: Index of iFrame.
+        :return: N/A
+        """
         self.driver.switch_to.frame(frame_index)

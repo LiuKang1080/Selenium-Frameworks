@@ -15,9 +15,9 @@ class BasePage(CustomSeleniumDriver):
 
     def verify_page_title(self, title_of_page):
         """
-        Verify the page title.
+        Verify the title of current page.
         :param title_of_page: Title of current page that needs to be verified.
-        :return: True or False
+        :return: True / False
         """
 
         try:
