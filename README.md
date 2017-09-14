@@ -14,6 +14,7 @@ Fork or clone project for Zip file.
 * Download InternetExplorer Driver: http://selenium-release.storage.googleapis.com/index.html?path=3.4/
 * Download GekoDriver: https://github.com/mozilla/geckodriver/releases
 
+### Windows
 Ensure that the directory path for these Drivers are placed as Environment variables in %PATH% for a windows environment.
 
 ## Running Tests 
