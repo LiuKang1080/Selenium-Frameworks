@@ -18,6 +18,7 @@ Ensure that the directory path for these Drivers are placed as Environment varia
 
 ## Running Tests 
 __login_page.py__ and __register_courses.py__ are the main scripts that will run automated Test Cases for letskodeit.com
+
 Run tests from command line example:
 
 ```
