@@ -1,12 +1,12 @@
 """
-@package utilities
+Package: Utilities
 
-CheckPoint class implementation
-It provides functionality to assert the result
+Check point class implementation.
+Provides functionality to assert single or multiple assert statements.
 
-Example:
-    self.check_point.markFinal("Test Name", result, "Message")
+Example: self.check_point.mark_final("test_name", result, "message")
 """
+
 from Utilities. custom_logger import custom_logger
 import logging
 from Base.custom_selenium_driver import CustomSeleniumDriver
@@ -18,13 +18,19 @@ class StatusOfTest(CustomSeleniumDriver):
 
     def __init__(self, driver):
         """
-        Initializes CheckPoint class
-        :param driver:
+        Initializes Check point class.
+        :param driver: Pass current instance of driver.
         """
         super(StatusOfTest, self).__init__(driver)
         self.result_list = []
 
     def set_result(self, result, result_message):
+        """
+        Add result to result_list for each verification point in Test Case.
+        :param result: Result of verification.
+        :param result_message: Specific optional message: Preferred: Name of Test Case.
+        :return: N/A Each result is logged into specified log.
+        """
         try:
             if result is not None:
                 if result:
@@ -45,15 +51,19 @@ class StatusOfTest(CustomSeleniumDriver):
 
     def mark(self, result, result_message):
         """
-        Mark the result of the verification point in a test case
+        Mark the result of the verification point in a Test Case.
+        :param result: Result of verification.
+        :param result_message: Specific optional message: Preferred: Name of Test Case.
+        :return: N/A
         """
+
         self.set_result(result, result_message)
 
     def mark_final(self, test_name, result, result_message):
         """
-        Mark the final result of the verification point in a test case
-        This needs to be called at least once in a test case
-        This should be final test status of the test case
+        Mark the final result of the verification point in a Test Case.
+        mark_final needs to be called at least once in a Test Case. Preferably
+        mark_final method should be the final test status of the Test Case
         """
         self.set_result(result, result_message)
 

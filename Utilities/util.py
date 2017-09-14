@@ -12,9 +12,9 @@ class Util(object):
     def sleep(self, sec, info=""):
         """
         Set the program to wait explicitly for the specified amount of time.
-        :param sec: Number of Seconds to wait
+        :param sec: Number of Seconds to wait.
         :param info: Optional text.
-        :return: None
+        :return: N/A
         """
         if info is not None:
             self.automation_logger.info("Wait:: " + str(sec) + "second for " + info)
@@ -25,10 +25,10 @@ class Util(object):
 
     def get_alpha_numeric(self, length, type_of_data='letters'):
         """
-        Get random string of characters
+        Get random string of characters.
         :param length: Number of characters the string should contain.
         :param type_of_data: Type of characters the string should contain, default = letters.
-        :return: Returns the alpha-numeric string
+        :return: Alpha-numeric string.
         """
         alpha_num = ''
         if type_of_data == 'lower':
@@ -46,7 +46,7 @@ class Util(object):
     def get_unique_name(self, character_count=10):
         """
         Get a unique name.
-        :param character_count: length of the character.
+        :param character_count: Length of the character.
         :return: Unique name.
         """
         return self.get_alpha_numeric(character_count, 'lower')
@@ -56,7 +56,7 @@ class Util(object):
         Get a list of unique names.
         :param list_size: Number of unique names in the list.
         :param item_length: Length of each item within the list.
-        :return: Returns a list with unique names.
+        :return: List with unique names.
         """
         name_list = []
         for i in range(0, list_size):
@@ -66,7 +66,7 @@ class Util(object):
     def verify_text_contains(self, actual_text, expected_text):
         """
         Verify that actual_text contains expected_text string.
-        :param actual_text: Captured text value from web page
+        :param actual_text: Captured text value from web page.
         :param expected_text: given text to test against actual_text.
         :return: True / False
         """
@@ -81,9 +81,9 @@ class Util(object):
 
     def verify_text_match(self, actual_text, expected_text):
         """
-        Verify if the actual_text matches (exactly) the expected_text
-        :param actual_text: Captured text value from web page
-        :param expected_text: given text to test against actual_text
+        Verify if the actual_text matches (exactly) the expected_text.
+        :param actual_text: Captured text value from web page.
+        :param expected_text: given text to test against actual_text.
         :return: True / False
         """
         self.automation_logger.info("Actual Text from web application :: " + actual_text)

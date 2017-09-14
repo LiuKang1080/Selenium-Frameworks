@@ -3,6 +3,12 @@ import inspect
 
 
 def custom_logger(log_level, log_name=None):
+    """
+    Create a custom logger with custom.log file.
+    :param log_level: Default log level for specific log.
+    :param log_name: Specific name of the log. (Default = automation.log)
+    :return:
+    """
 
     # Gets the name of the class / method from where this method is called from
     logger_name = inspect.stack()[1][3]
