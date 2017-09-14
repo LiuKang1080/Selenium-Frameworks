@@ -25,5 +25,5 @@ $ py.test -s -v Tests\home_test_package\login_tests.py
 ```
 additional parameters can be added to specify different browsers (chrome, firefox or ie):
 ```
-$ py.test -s -v Tests\home_test_package\loging_tests.py --browser firefox
+$ py.test -s -v Tests\home_test_package\login_tests.py --browser firefox
 ```
