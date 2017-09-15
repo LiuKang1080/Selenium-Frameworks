@@ -15,7 +15,7 @@ Fork or clone project for Zip file.
 * Download GekoDriver: https://github.com/mozilla/geckodriver/releases
 
 ### Windows
-Ensure that the directory path for these Drivers are placed as Environment variables in %PATH% for a windows environment.
+Ensure that the directory path for these Drivers are placed as Environment Variables for the system.
 
 ## Running Tests 
 __login_page.py__ and __register_courses.py__ are the main scripts that will run automated Test Cases for letskodeit.com
