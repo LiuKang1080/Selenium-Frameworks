@@ -66,28 +66,40 @@ class RegisterCourses(BasePage):
         self.scroll_window("down")
         self.register_course_logger.info("enter_credit_info method was called from Page Class: " + "\n")
 
-        self.switch_iframes(0)
-        element_list = self.get_element_list(self._credit_card_field, locator_type='xpath')
-        self.element_send_keys(credit_num, element=element_list[0])
-        self.register_course_logger.info("Entering credit card info: Locator: " + self._credit_card_field)
-        time.sleep(1)
+        try:
+            self.switch_iframes(0)
+            element_list = self.get_element_list(self._credit_card_field, locator_type='xpath')
+            self.element_send_keys(credit_num, element=element_list[0])
+            self.register_course_logger.info("Entering credit card info: Locator: " + self._credit_card_field)
+            time.sleep(1)
+        except Exception as err:
+            self.register_course_logger.error("Could not switch to the Frame: Frame(0)" + '\n' + str(err))
 
-        self.switch_iframes(1)
-        element_list = self.get_element_list(self._expiration_field, locator_type='xpath')
-        self.element_send_keys(exp_date, element=element_list[0])
-        self.register_course_logger.info("Entering expiration date: Locator: " + self._expiration_field)
-        time.sleep(1)
+        try:
+            self.switch_iframes(1)
+            element_list = self.get_element_list(self._expiration_field, locator_type='xpath')
+            self.element_send_keys(exp_date, element=element_list[0])
+            self.register_course_logger.info("Entering expiration date: Locator: " + self._expiration_field)
+            time.sleep(1)
+        except Exception as err:
+            self.register_course_logger.error("Could not switch to the Frame: Frame(1)" + '\n' + str(err))
 
-        self.switch_iframes(2)
-        element_list = self.get_element_list(self._cvc_field, locator_type='xpath')
-        self.element_send_keys(cvc_num, element=element_list[0])
-        self.register_course_logger.info("Entering CVC number: Locator: " + self._cvc_field)
-        time.sleep(1)
+        try:
+            self.switch_iframes(2)
+            element_list = self.get_element_list(self._cvc_field, locator_type='xpath')
+            self.element_send_keys(cvc_num, element=element_list[0])
+            self.register_course_logger.info("Entering CVC number: Locator: " + self._cvc_field)
+            time.sleep(1)
+        except Exception as err:
+            self.register_course_logger.error("Could not switch to the Frame: Frame(2)" + '\n' + str(err))
 
-        self.switch_iframes(3)
-        element_list = self.get_element_list(self._zip_field, locator_type='xpath')
-        self.element_send_keys(zip_num, element=element_list[0])
-        self.register_course_logger.info("Entering zip code: Locator: " + self._zip_field)
+        try:
+            self.switch_iframes(3)
+            element_list = self.get_element_list(self._zip_field, locator_type='xpath')
+            self.element_send_keys(zip_num, element=element_list[0])
+            self.register_course_logger.info("Entering zip code: Locator: " + self._zip_field)
+        except Exception as err:
+            self.register_course_logger.error("Could not switch to the Frame: Frame(3)" + '\n' + str(err))
 
     def verify_enroll_fail(self):
         """

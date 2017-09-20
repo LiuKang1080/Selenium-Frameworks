@@ -1,4 +1,4 @@
-from Pages.javascript_test_package.register_courses_page import RegisterCourses
+from Pages.register_courses_page_package.register_courses_page import RegisterCourses
 from Utilities.status_of_tests import StatusOfTest
 import unittest
 import pytest

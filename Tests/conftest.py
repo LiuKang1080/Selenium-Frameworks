@@ -1,6 +1,6 @@
 import pytest
 from Base.webdriver_factory import WebDriverFactory
-from Pages.home_test_package.login_page import LoginPage
+from Pages.home_test_page_package.login_page import LoginPage
 
 
 @pytest.yield_fixture(scope="class")
@@ -15,6 +15,8 @@ def set_up(request, browser):
         request.cls.driver = driver
 
     yield driver
+
+    driver.close()
     driver.quit()
     print("Running method level Tear Down")
 

@@ -1,4 +1,4 @@
-from Pages.home_test_package.login_page import LoginPage
+from Pages.home_test_page_package.login_page import LoginPage
 from Utilities.status_of_tests import StatusOfTest
 import unittest
 import pytest

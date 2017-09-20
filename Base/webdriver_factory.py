@@ -37,7 +37,7 @@ class WebDriverFactory:
         :return: Webdriver instance.
         """
         base_url = "https://letskodeit.teachable.com/"
-        if self.browser == "iexplorer":
+        if self.browser == "IE":
             # Set ie driver
             driver = webdriver.Ie()
             print("Running test on IE")
