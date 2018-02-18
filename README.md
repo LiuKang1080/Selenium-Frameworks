@@ -34,3 +34,6 @@ additional parameters can be added to specify different browsers (chrome, firefo
 ```
 $ py.test -s -v Tests\home_test_package\login_tests.py --browser firefox
 ```
+
+## Sources for Learning
+Learned from Udemy, Selenium WebDriver 3.X with Python course.
